@@ -210,8 +210,8 @@ Dans notre projet, nous avons créé 3 programmes: un serveur, un client - stati
 
 *	Serveur
 
-	Nous avons créé un script Python,appelé "run.py" dans le chemin du répertoire "Vlib_Client_Server/Server". Voir le lien github du script suivant:
-	**Links:** :download: :githublink:`https://github.com/mdfonkoua/projet_fil_rouge/Vlib_Client_Server/Server/run.py|*`
+	Nous avons créé un script Python,appelé "run.py" dans le chemin du répertoire "Vlib_Client_Server/Server". 
+	Voir le lien github du script suivant 'run.py <https://github.com/mdfonkoua/projet_fil_rouge/blob/master/Vlib_Client_Server/Server/run.py>`_
 
 	qui va permettre de créer une liaison de socket, et le serveur se met en attente de connexion du client (station ou cycliste).
 	C'est l'étape d'initialisation du serveur. 
@@ -229,8 +229,9 @@ Dans notre projet, nous avons créé 3 programmes: un serveur, un client - stati
 	
 *	Client - Station 
 
-	Ensuite, nous avons créé un script Python,appelé "run.py" dans le chemin du répertoire "Vlib_Client_Server/Station". Voir le lien github du script suivant:
-	**Links:** :download: :githublink:`https://github.com/mdfonkoua/projet_fil_rouge/Vlib_Client_Server/Station/run.py|*`
+	Ensuite, nous avons créé un script Python,appelé "run.py" dans le chemin du répertoire "Vlib_Client_Server/Station". 
+	Voir le lien github du script suivant 'run.py <https://github.com/mdfonkoua/projet_fil_rouge/blob/master/Vlib_Client_Server/Station/run.py>`_
+
 
 	Pour le cadre de notre étude, on génère aléatoirement le nombre de stations possibles, le nom des stations (avec une combinaison possible 
 	de 5 alphanumériques, avec leur position. Il enregistre une ligne contenant toutes les informations dans un fichier, enregistrant toutes les 
@@ -247,8 +248,9 @@ Dans notre projet, nous avons créé 3 programmes: un serveur, un client - stati
 	
 * 	Client - Cycliste
 
-	Nous avons créé un script Python,appelé "run.py" dans le chemin du répertoire "Vlib_Client_Server/Cycliste". Voir le lien github du script suivant:
-	**Links:** :download: :githublink:`https://github.com/mdfonkoua/projet_fil_rouge/Vlib_Client_Server/Cycliste/run.py|*`
+	Nous avons créé un script Python,appelé "run.py" dans le chemin du répertoire "Vlib_Client_Server/Cycliste". 
+	Voir le lien github du script suivant 'run.py <https://github.com/mdfonkoua/projet_fil_rouge/blob/master/Vlib_Client_Server/Cycliste/run.py>`_
+
 
 	La différence avec Client - Station, est l'ajout de la distance entre la station la plus proche, et le cycliste. En effet, la liste créée contenant toutes
 	les stations connectées, va nous permettre de calculer la distance entre le cycliste et toutes les stations connectées, pour nous permettre de choisir la station
@@ -283,8 +285,9 @@ Un conteneur est lancé en exécutant une image. L’image est un package exécu
 Un conteneur est une instance d’exécution d’une image. Il s’exécute nativement sur linux et partage le noyau de la machine hôte avec d’autres conteneurs. Il exécute un processus discret, ne prenant pas plus de mémoire q
 ue tout autre exécutable,  
 
-L’objectif est de saisir un environnement d’exécution sous forme d’images. Ces dernières  sont définies par le dockerfile. Voir le lien github du fichier Dockerfile suivant:
-	**Links:** :download: :githublink:`https://github.com/mdfonkoua/projet_fil_rouge/Vlib_Client_Server/Config/Dockerfile|*`
+L’objectif est de saisir un environnement d’exécution sous forme d’images. Ces dernières  sont définies par le dockerfile. 
+Voir le lien github du fichier suivant 'Dockerfile <https://github.com/mdfonkoua/projet_fil_rouge/blob/master/Vlib_Client_Server/Config/Dockerfile>`_
+
 	L’accès à des ressources telles que les interfaces réseau et les lecteurs de disque est virtualisé dans cet environnement isolé du reste du système. 
 Il faut donc mapper les ports vers le monde extérieur et être précis sur les fichier que l’on souhaite « copier » dans cet environnement. Après avoir fait cela, la construction de l’application définie dans ce dockerfile se comporte exactement de la même manière partout ou elle s’exécute.
 
@@ -305,6 +308,7 @@ Voici à quoi ressemble notre dockerfile que nous avons créé dans le chemin du
 
 Le Docker-compose situé dans le répertoire "Vlib_Client_Server", pour le serveur et les 2 clients, va créer une image à partir du dockerfile présenté précédemment, entrer en paramètre le port , synchroniser notre répertoire local contenant notre script créé précédemment au répertoire /app
 de même pour /logs pour accéder au fichier suivant:
+
 .. code:: ipython3
 
         with open("./../logs/stations_dispos.csv") as f:
@@ -335,13 +339,12 @@ Ce Docker-compose permet d'éxecuter plusieurs conteneurs:
 
 3 - Client - Cycliste
 
-Voir le lien github du fichier docker-compose.yml suivant:
-	**Links:** :download: :githublink:`https://github.com/mdfonkoua/projet_fil_rouge/Vlib_Client_Server/Config/docker-compose.yml|*`
+Voir le lien github du fichier suivant 'docker-compose.yml <https://github.com/mdfonkoua/projet_fil_rouge/blob/master/Vlib_Client_Server/docker-compose.yml>`_
 
 Cela executera les 3 images pour pouvoir exécuter le code Python.
 
 	.. warning::
-			Se placer dans le dossier "Vlib_Client_Server" et ouvrir une console pour lancer la commande "docker-compose up --build"
+			Se placer dans le dossier "Vlib_Client_Server" et ouvrir une console pour lancer la commande ci-dessous
 	.. image:: ./image/docker-compose.JPG
 
 	
@@ -350,8 +353,7 @@ Cela executera les 3 images pour pouvoir exécuter le code Python.
 Perspectives
 ############
 
-	Malgré le travail que nous avons réalisé, plusieurs axes de dévloppement peuvent être
-explorés. Une analyse comportementale des stations, et s'appuyant sur un ratio de disponibilité, 
+	Malgré le travail que nous avons réalisé, plusieurs axes de dévloppement peuvent être explorés. Une analyse comportementale des stations, et s'appuyant sur un ratio de disponibilité, 
 qui peut varier en fonction de leur localisation géographique. Une idée pour cela serait de ne pas analyser le comportement
 des stations une par une, mais de faire un rassemblement, créer des clusters de stations qui se ressemblent pour 
 ensuite en étudier le comportement.
