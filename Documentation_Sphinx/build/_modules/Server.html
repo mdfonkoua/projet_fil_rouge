@@ -1,0 +1,134 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Server &#8212; documentation Projet fil rouge - Velib 1.0</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Code source de Server</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">socket</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">threading</span><span class="o">,</span> <span class="nn">pickle</span>
+
+<div class="viewcode-block" id="ThreadClient"><a class="viewcode-back" href="../doc_classe_Server.html#Server.ThreadClient">[docs]</a><span class="k">class</span> <span class="nc">ThreadClient</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		dérivation d&#39;un objet thread pour gérer la connexion avec un client</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+	
+<div class="viewcode-block" id="ThreadClient.__init__"><a class="viewcode-back" href="../doc_classe_Server.html#Server.ThreadClient.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conn</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Créer un nouvel objet thread pour gérer la connexion</span>
+
+<span class="sd">            :param conn: connexion</span>
+<span class="sd">            :type conn: string</span>
+
+<span class="sd">            :return: Objet ThreadClient</span>
+<span class="sd">            :rtype: ThreadClient</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connexion</span> <span class="o">=</span> <span class="n">conn</span></div>
+        
+<div class="viewcode-block" id="ThreadClient.run"><a class="viewcode-back" href="../doc_classe_Server.html#Server.ThreadClient.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Dialogue avec le client</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">            :rtype: NoneType</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>        <span class="c1"># Chaque thread possède un nom</span>
+        <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">msgClient</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connexion</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+            <span class="n">msgClient_list</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">msgClient</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">msgClient</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;FIN&quot;</span> <span class="ow">or</span> <span class="n">msgClient</span> <span class="o">==</span><span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&gt; </span><span class="si">%s</span><span class="s2"> connectée; Position : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">msgClient_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">msgClient_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="sd">&quot;&quot;&quot;log =(msgClient_list[0][0].upper(),adresse[0],self.position[0][0], self.position[0][1])</span>
+<span class="sd">            to_print = u&quot;%s,%s,%s,%s&quot;%log # On imprime le message résumant tout ce qui est en haut</span>
+<span class="sd">            self.logger_server.log(to_print)&quot;&quot;&quot;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+            <span class="c1"># Faire suivre le message à tous les autres clients :</span>
+            <span class="c1">#for cle in conn_client:</span>
+            <span class="c1">#    if cle != nom:      # ne pas le renvoyer à l&#39;émetteur</span>
+            <span class="c1">#        conn_client[cle].sendall(message.encode(&#39;utf-8&#39;))</span>
+                    
+        <span class="c1"># Fermeture de la connexion :</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connexion</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>      <span class="c1"># couper la connexion côté serveur</span>
+        <span class="k">del</span> <span class="n">conn_client</span><span class="p">[</span><span class="n">nom</span><span class="p">]</span>        <span class="c1"># supprimer son entrée dans le dictionnaire</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Client </span><span class="si">%s</span><span class="s2"> déconnecté.&quot;</span> <span class="o">%</span> <span class="n">nom</span><span class="p">)</span></div></div>
+        <span class="c1"># Le thread se termine ici    </span>
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Code du module</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Michael Fonkoua, Anais Ewoudi, Celine Kociemba, Yves Moctar Sidibe.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

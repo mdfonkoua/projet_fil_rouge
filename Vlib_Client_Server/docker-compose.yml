@@ -1,0 +1,36 @@
+version: '3'
+services:
+  server:
+    build: ./Config
+    image: server
+    container_name: server
+    volumes:
+      - ./Server:/app
+      - ./logs:/logs
+    ports:
+      - 40000:40000
+    command: tail -F anything
+  station:
+    build: ./Config
+    image: station
+    container_name: station
+    volumes:
+      - ./Station:/app
+      - ./logs:/logs
+    ports:
+      - 40001:40000
+    command: tail -F anything
+    links:
+      - server
+  cycliste: 
+    build: ./Config 
+    image: cycliste
+    container_name: cycliste
+    volumes:
+      - ./Cycliste:/app
+      - ./logs:/logs
+    ports:
+      - 40002:40000
+    command: tail -F anything
+    links:
+      - server

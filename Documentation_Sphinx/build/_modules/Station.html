@@ -1,0 +1,285 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Station &#8212; documentation Projet fil rouge - Velib 1.0</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Code source de Station</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="Station"><a class="viewcode-back" href="../doc_classe_Station.html#Station.Station">[docs]</a><span></span><span class="k">class</span> <span class="nc">Station</span><span class="p">:</span>
+<div class="viewcode-block" id="Station.__init__"><a class="viewcode-back" href="../doc_classe_Station.html#Station.Station.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span> <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Créer un nouvel objet Station pour rentrer les paramètres d’une station</span>
+
+<span class="sd">            :param parameters: parametres</span>
+<span class="sd">            :type parameters: liste</span>
+
+<span class="sd">            :param debug: debug</span>
+<span class="sd">            :type debug: boolean</span>
+
+<span class="sd">            :return: Objet Station</span>
+<span class="sd">            :rtype: Station</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="kn">import</span> <span class="nn">random</span>
+        <span class="kn">import</span> <span class="nn">time</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span>               <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span>          <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_plot</span>           <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span> <span class="c1"># Nombre de places </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span>          <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Nombre de places libres</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_velos</span>          <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_plot</span> <span class="c1"># On part du principe où toutes les places sont prises</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">velos</span>             <span class="o">=</span> <span class="p">[]</span>     <span class="c1"># Création d&#39;une liste vide</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_message</span>         <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># ?</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug</span>             <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">avaries</span>           <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Avarie sur le vélo ?</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arrete</span>            <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">liste_d_avaries</span>   <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_fois_en_arret</span>  <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_dispos</span>     <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;./../logs/stations_dispos.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;nom,n_message,time,nb_plot,nb_libre,nb_velos,lattitude, longitude&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_reparation</span> <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;./../logs/stations_reparations.csv&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_avarie</span>     <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;./../logs/stations_avarie.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;nom,n_message,time,avarie&quot;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_dispo</span><span class="p">()</span>
+        <span class="n">nb_nom_velo</span><span class="o">=</span><span class="mi">100</span>
+        <span class="n">noms</span> <span class="o">=</span> <span class="n">get_names</span><span class="p">(</span><span class="n">nb_nom_velo</span><span class="p">)</span> <span class="c1"># la définition de get_names est plus bas dans une autre cellule</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_velos</span> <span class="p">):</span>
+            <span class="n">nom_velo</span><span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;velo_&quot;</span><span class="o">+</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">noms</span><span class="p">)])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">velos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Velo</span><span class="p">(</span><span class="n">nom_velo</span> <span class="p">,</span> <span class="bp">self</span><span class="p">))</span></div>
+        
+
+<div class="viewcode-block" id="Station.log_reparation"><a class="viewcode-back" href="../doc_classe_Station.html#Station.Station.log_reparation">[docs]</a>    <span class="k">def</span> <span class="nf">log_reparation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Nombre de vélos en réparation</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">            :rtype: NoneType</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_dispo</span><span class="p">()</span></div>
+            
+            
+<div class="viewcode-block" id="Station.log_dispo"><a class="viewcode-back" href="../doc_classe_Station.html#Station.Station.log_dispo">[docs]</a>    <span class="k">def</span> <span class="nf">log_dispo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Nombre de vélos disponibles</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">            :rtype: NoneType</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_message</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># sachant qu&#39;on commence à -1 donc on commence à 0</span>
+        <span class="n">dispo</span> <span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n_message</span><span class="p">,</span> <span class="n">time</span><span class="p">(),</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_plot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_velos</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+        <span class="c1"># On décrit la disponibilité de la station : le nom, combien de places libres...</span>
+        <span class="n">to_print</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">dispo</span> <span class="c1"># On imprime le message résumant tout ce qui est en haut</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_dispos</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">to_print</span><span class="p">)</span></div>
+            
+<div class="viewcode-block" id="Station.log_avarie"><a class="viewcode-back" href="../doc_classe_Station.html#Station.Station.log_avarie">[docs]</a>    <span class="k">def</span> <span class="nf">log_avarie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">avarie</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Avarie sur le vélo</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">            :rtype: NoneType</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_message</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">to_print</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n_message</span><span class="p">,</span> <span class="n">time</span><span class="p">(),</span> <span class="n">avarie</span><span class="p">)</span> 
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_avarie</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">to_print</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="Station.avarie_possible"><a class="viewcode-back" href="../doc_classe_Station.html#Station.Station.avarie_possible">[docs]</a>    <span class="k">def</span> <span class="nf">avarie_possible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            problèmes potentiels sur le vélo</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">            :rtype: NoneType</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">math</span>
+        <span class="kn">import</span> <span class="nn">random</span>
+        <span class="kn">import</span> <span class="nn">time</span>
+        <span class="n">problemes</span>   <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;plot&quot;</span>       <span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="p">,</span> <span class="c1"># Le nombre de places possibles</span>
+                       <span class="s2">&quot;half&quot;</span>        <span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span> <span class="p">,</span> <span class="c1"># ?</span>
+                       <span class="s2">&quot;network&quot;</span>     <span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">)</span> <span class="p">,</span> <span class="c1"># problème de réseau</span>
+                       <span class="s2">&quot;electricite&quot;</span> <span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span> <span class="p">,</span> 
+                       <span class="s2">&quot;bug&quot;</span>         <span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">90</span><span class="p">)</span> <span class="p">}</span> <span class="c1"># bug de quelle nature ?</span>
+        <span class="n">zero</span>     <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">mil</span>      <span class="o">=</span> <span class="mi">1000</span>
+        <span class="n">cent_mil</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">mil</span> 
+        
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">problemes</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">liste_d_avaries</span><span class="p">:</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">mil</span><span class="p">,</span> <span class="n">cent_mil</span><span class="p">)</span>
+                <span class="n">new_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">r</span><span class="o">+</span><span class="mi">30</span><span class="p">)</span>
+                <span class="n">problemes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">new_range</span><span class="p">)</span>
+        
+        <span class="n">alea</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">zero</span><span class="p">,</span><span class="n">cent_mil</span><span class="p">)</span>
+        <span class="n">avarie</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">problemes</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">alea</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
+                <span class="n">avarie</span> <span class="o">=</span> <span class="n">k</span>
+                
+        <span class="k">if</span> <span class="n">avarie</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">avaries</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">avarie</span><span class="p">])</span>
+            <span class="k">if</span>   <span class="n">avarie</span> <span class="o">==</span> <span class="s2">&quot;plot&quot;</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># Avarie sur une place</span>
+            <span class="k">elif</span> <span class="n">avarie</span> <span class="o">==</span> <span class="s2">&quot;half&quot;</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_plot</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+            <span class="k">elif</span> <span class="n">avarie</span> <span class="o">==</span> <span class="s2">&quot;bug&quot;</span>  <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">-</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">avarie</span> <span class="o">==</span> <span class="s2">&quot;network&quot;</span> <span class="ow">or</span> <span class="n">avarie</span> <span class="o">==</span> <span class="s2">&quot;electricite&quot;</span><span class="p">:</span> <span class="c1"># Avarie sur toute la station</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">arrete</span> <span class="o">=</span> <span class="kc">True</span>
+                
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># On peut avoir un nombre de places libres inférieur à 0 ?</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">=</span> <span class="mi">0</span>            
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_dispo</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">avarie</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log_avarie</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">avarie</span><span class="p">)</span></div>
+            
+<div class="viewcode-block" id="Station.rendre_velo"><a class="viewcode-back" href="../doc_classe_Station.html#Station.Station.rendre_velo">[docs]</a>    <span class="k">def</span> <span class="nf">rendre_velo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">velo</span><span class="p">,</span> <span class="n">nb_km_trajet</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            rendre un vélo sur une place disponible</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">            :rtype: NoneType</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">avarie_possible</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">velos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">velo</span><span class="p">)</span>
+            <span class="n">velo</span><span class="o">.</span><span class="n">rendu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nb_km_trajet</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nb_velos</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velos</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># A chaque fois que je retourne un vélo, il enlève une place</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_dispo</span><span class="p">()</span>
+            <span class="k">return</span> <span class="mi">1</span> <span class="c1"># Pour dire que j&#39;ai un vélo disponible</span>
+        <span class="k">if</span> <span class="mi">9500</span> <span class="o">&lt;</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span> <span class="p">)</span> <span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reparer</span><span class="p">()</span> <span class="c1"># ?</span>
+        <span class="k">return</span> <span class="mi">0</span></div>
+    
+<div class="viewcode-block" id="Station.reparer"><a class="viewcode-back" href="../doc_classe_Station.html#Station.Station.reparer">[docs]</a>    <span class="k">def</span> <span class="nf">reparer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            reparer le velo</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">            :rtype: NoneType</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_plot</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_velos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arrete</span>   <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_reparation</span><span class="p">()</span></div>
+        
+<div class="viewcode-block" id="Station.prendre_velo"><a class="viewcode-back" href="../doc_classe_Station.html#Station.Station.prendre_velo">[docs]</a>    <span class="k">def</span> <span class="nf">prendre_velo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            prendre un vélo</span>
+
+<span class="sd">            :return: un vélo ou 0 en cas d&#39;erreur</span>
+<span class="sd">            :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">avarie_possible</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">velos</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">arrete</span> <span class="p">:</span>
+            <span class="n">to_return</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">velos</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nb_velos</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velos</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_dispo</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">to_return</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arrete</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nb_fois_en_arret</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># erreur codage ?</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_fois_en_arret</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reparer</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="mi">0</span></div>
+    
+    <span class="k">def</span> <span class="nf">get_nearest_station</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># dans un carré ?</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">deplacement_x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">deplacement_y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">deplacements</span>  <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">x_proche</span> <span class="p">,</span> <span class="n">y_proche</span><span class="p">)</span> <span class="k">for</span> <span class="n">x_proche</span> <span class="ow">in</span> <span class="n">deplacement_x</span> <span class="k">for</span> <span class="n">y_proche</span> <span class="ow">in</span>  <span class="n">deplacement_y</span> <span class="k">if</span> <span class="n">x_proche</span> <span class="ow">or</span> <span class="n">y_proche</span><span class="p">]</span>
+        <span class="n">positions_proches</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span> <span class="o">+</span>  <span class="n">a</span> <span class="p">,</span> <span class="n">y</span> <span class="o">+</span>  <span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="ow">in</span>  <span class="n">deplacements</span> <span class="p">]</span>
+        <span class="n">nearests</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="ow">in</span> <span class="n">positions_proches</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span> 
+            <span class="n">position_la_plus_proche</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">cote_len</span>  <span class="o">+</span> <span class="n">y2</span>
+            <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">position_la_plus_proche</span> <span class="ow">and</span> <span class="n">position_la_plus_proche</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">stations</span><span class="p">):</span>
+                <span class="n">nearests</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stations</span><span class="p">[</span><span class="n">position_la_plus_proche</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">nearests</span>
+        
+                
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Code du module</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Michael Fonkoua, Anais Ewoudi, Celine Kociemba, Yves Moctar Sidibe.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

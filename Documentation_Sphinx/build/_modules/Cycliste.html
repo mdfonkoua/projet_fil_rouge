@@ -1,0 +1,413 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Cycliste &#8212; documentation Projet fil rouge - Velib 1.0</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Code source de Cycliste</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="Cycliste"><a class="viewcode-back" href="../doc_classe_Cycliste.html#Cycliste.Cycliste">[docs]</a><span></span><span class="k">class</span> <span class="nc">Cycliste</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Cycliste.__init__"><a class="viewcode-back" href="../doc_classe_Cycliste.html#Cycliste.Cycliste.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Créer un nouvel objet Station pour rentrer les paramètres d’une station</span>
+
+<span class="sd">            :param parameters: parametres</span>
+<span class="sd">            :type parameters: liste</span>
+
+<span class="sd">            :return: Objet Station</span>
+<span class="sd">            :rtype: Station</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="kn">import</span> <span class="nn">time</span>
+        <span class="kn">import</span> <span class="nn">random</span>
+        <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">norm</span>
+        <span class="kn">import</span> <span class="nn">random</span>
+        
+        <span class="sd">&quot;&quot;&quot; ==========================================================</span>
+<span class="sd">                                    Variables</span>
+<span class="sd">        ===============================================================&quot;&quot;&quot;</span>
+        
+        <span class="n">homme</span>   <span class="o">=</span> <span class="s2">&quot;homme&quot;</span>
+        <span class="n">femme</span>   <span class="o">=</span> <span class="s2">&quot;femme&quot;</span>
+        <span class="n">age_min</span> <span class="o">=</span> <span class="mi">14</span> 
+        <span class="n">age_max</span> <span class="o">=</span> <span class="mi">80</span>
+        <span class="n">sexe</span>    <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">homme</span><span class="p">,</span> <span class="n">femme</span><span class="p">])</span> <span class="c1"># choisit un élément aléatoire dans une liste</span>
+        <span class="n">age</span>     <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">age_min</span> <span class="p">,</span><span class="n">age_max</span><span class="p">)</span>
+        <span class="n">sportif</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span> <span class="p">])</span> 
+        
+        <span class="c1"># Les chiffres qui vont suivre en paramètre ont été choisis au hasard comme référence</span>
+        
+        <span class="k">if</span>   <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">35</span> <span class="p">:</span> <span class="n">facteur</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span> <span class="n">loc</span> <span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.2</span> <span class="p">)</span> 
+        <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="p">:</span> <span class="n">facteur</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span> <span class="n">loc</span> <span class="o">=</span><span class="mi">1</span>  <span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.2</span> <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">90</span> <span class="p">:</span> <span class="n">facteur</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span> <span class="n">loc</span> <span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.2</span> <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">sexe</span> <span class="o">==</span> <span class="n">homme</span><span class="p">:</span>
+            <span class="n">vitesse_de_base</span>  <span class="o">=</span> <span class="mi">20</span>
+            <span class="n">nb_km</span>            <span class="o">=</span> <span class="n">norm</span><span class="p">(</span> <span class="n">loc</span> <span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">4</span> <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vitesse_de_base</span>  <span class="o">=</span> <span class="mi">15</span>
+            <span class="n">nb_km</span>            <span class="o">=</span> <span class="n">norm</span><span class="p">(</span> <span class="n">loc</span> <span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">4</span> <span class="p">)</span>
+        <span class="n">vitesse_moyenne</span>      <span class="o">=</span> <span class="n">vitesse_de_base</span> <span class="o">*</span> <span class="n">facteur</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">sportif</span> <span class="c1"># rvs nous permet de choisir au hasard dans la variable facteur</span>
+        
+        <span class="sd">&quot;&quot;&quot; ==========================================================</span>
+<span class="sd">                                    Attributs</span>
+<span class="sd">        ===============================================================&quot;&quot;&quot;</span>
+        <span class="c1">#self.identifiant     = &quot;cycliste_%s&quot;%parameters[0]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">identifiant</span>     <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">station_maison</span>  <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1">#self.station_travail = parameters[2]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">station_travail</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sportif</span>         <span class="o">=</span> <span class="n">sportif</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span>             <span class="o">=</span> <span class="n">age</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sexe</span>            <span class="o">=</span> <span class="n">sexe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_km</span>           <span class="o">=</span> <span class="n">nb_km</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vitesse</span>         <span class="o">=</span> <span class="n">vitesse_moyenne</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sur_velo</span>        <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug</span>           <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_trajet</span>       <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">durees</span>          <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trajets</span>         <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">velo</span>            <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prises</span>          <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attente</span>         <span class="o">=</span> <span class="mf">0.5</span> <span class="p">;</span> <span class="c1">#random.randint(0,10)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_rendu</span>      <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_cycliste</span> <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;./../logs/cycliste_cyclistes.csv&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;cycliste,sportif,age,sexe,nb_km,vitesse,attente&quot;</span>        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_prise</span>    <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;./../logs/cycliste_prises.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;cycliste,heure_de_depart,velo,action&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_rendu</span>    <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;./../logs/cycliste_rendu.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;cycliste,heure_de_depart,heure_d_arrivee,nb_km_trajet,velo.nom&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_debug</span>    <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;./../logs/cycliste_debug.csv&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;cycliste,n_message,time,message&quot;</span><span class="p">)</span>
+        
+        
+        
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span>     <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_message</span>       <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trajet_courant</span>  <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        
+        <span class="sd">&quot;&quot;&quot; ==========================================================</span>
+<span class="sd">                                    Logs</span>
+<span class="sd">        ===============================================================&quot;&quot;&quot;</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_cycliste</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_debug</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;cree&quot;</span><span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;station_maison = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">station_maison</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;station_travail = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">station_travail</span><span class="p">)</span></div>
+        <span class="c1">#self.log_debug(u&quot;station_maison nearest= %s&quot;%&quot;|&quot;.join([x.nom for x in self.station_maison.nearest]))</span>
+        <span class="c1">#self.log_debug(u&quot;station_travail nearest= %s&quot;%&quot;|&quot;.join([x.nom for x in self.station_travail.nearest]))</span>
+        
+<div class="viewcode-block" id="Cycliste.peut_prendre_velo"><a class="viewcode-back" href="../doc_classe_Cycliste.html#Cycliste.Cycliste.peut_prendre_velo">[docs]</a>    <span class="k">def</span> <span class="nf">peut_prendre_velo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Renvoie un velo ou bien False.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
+        <span class="kn">import</span> <span class="nn">random</span>
+        
+        <span class="sd">&quot;&quot;&quot; __________________________________________________________</span>
+<span class="sd">                            Préconditions</span>
+<span class="sd">        ______________________________________________________________&quot;&quot;&quot;</span>        
+        <span class="k">if</span> <span class="n">time</span><span class="p">()</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">attente</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_rendu</span><span class="p">:</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;trop t &quot;</span><span class="p">)</span> <span class="c1"># attente : temps de travail + heure du dernier rendu du vélo au travail</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sur_velo</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;en route&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span> <span class="c1"># Est ce que je peux avoir les 2 ? Trop tot et en route ?</span>
+        
+        <span class="sd">&quot;&quot;&quot; __________________________________________________________</span>
+<span class="sd">                    Recherche de vélo sur les stations proches</span>
+<span class="sd">        ______________________________________________________________&quot;&quot;&quot;</span>        
+        <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">station</span><span class="o">.</span><span class="n">nearest</span><span class="p">)</span> <span class="c1"># le nearest est calculé en fonction du lieu de travail et d&#39;habitation ?</span>
+        <span class="k">for</span> <span class="n">local_station</span> <span class="ow">in</span> <span class="n">station</span><span class="o">.</span><span class="n">nearest</span><span class="p">:</span>
+            <span class="n">velo</span> <span class="o">=</span> <span class="n">local_station</span><span class="o">.</span><span class="n">prendre_velo</span><span class="p">()</span>            
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">velo</span><span class="p">:</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;pas de velo sur la station </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="n">local_station</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">local_station</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">station_maison</span><span class="o">.</span><span class="n">nearest</span> <span class="p">:</span> <span class="n">elem_de</span> <span class="o">=</span> <span class="s2">&quot;station maison&quot;</span>
+            <span class="k">else</span>                                            <span class="p">:</span> <span class="n">elem_de</span> <span class="o">=</span> <span class="s2">&quot;station travail&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;velo pris sur station </span><span class="si">%s</span><span class="s2"> (elem de </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">local_station</span><span class="p">,</span><span class="n">elem_de</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">velo</span> <span class="p">,</span> <span class="n">local_station</span>
+        
+        <span class="sd">&quot;&quot;&quot; __________________________________________________________</span>
+<span class="sd">                                    Aucun vélo trouvé</span>
+<span class="sd">        ______________________________________________________________&quot;&quot;&quot;</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Aucun velo trouve aux alentours.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span></div>
+    
+    
+    <span class="k">def</span> <span class="nf">prend_velo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">time</span>
+        
+        <span class="k">if</span>   <span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span> <span class="p">:</span> <span class="n">station</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">station_maison</span>
+        <span class="k">else</span>                  <span class="p">:</span> <span class="n">station</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">station_travail</span>
+        
+        <span class="n">velo</span><span class="p">,</span> <span class="n">station</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">peut_prendre_velo</span><span class="p">(</span><span class="n">station</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">velo</span> <span class="p">:</span>
+            <span class="k">return</span> 
+                       
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> a pris le velo </span><span class="si">%s</span><span class="s2"> sur la station </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span><span class="p">,</span> <span class="n">velo</span><span class="p">,</span> <span class="n">station</span><span class="p">))</span>
+        <span class="n">velo</span><span class="o">.</span><span class="n">disponible</span>      <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sur_velo</span>        <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">heure_de_depart</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">velo</span>            <span class="o">=</span> <span class="n">velo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trajet_courant</span>  <span class="o">=</span> <span class="n">trajet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">velo</span><span class="p">,</span><span class="n">station</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_prise</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">nb_km_local</span>          <span class="o">=</span> <span class="n">norm</span><span class="p">(</span> <span class="n">loc</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_km</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_km</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> 
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;pbm sur nb_km_local = self.nb_km = </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_km</span><span class="p">)</span>
+            <span class="n">nb_km_local</span> <span class="o">=</span> <span class="mi">15</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">vitesse_local</span>        <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vitesse</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vitesse</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">vitesse_local</span>        <span class="o">=</span> <span class="n">vitesse_local</span> <span class="o">*</span> <span class="n">velo</span><span class="o">.</span><span class="n">performance</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;pbm sur vitesse_local self.vitesse = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">vitesse</span><span class="p">)</span>
+            <span class="n">vitesse_local</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vitesse</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_km_trajet</span>    <span class="o">=</span> <span class="n">nb_km_local</span>
+        <span class="n">duree</span>                <span class="o">=</span> <span class="n">nb_km_local</span> <span class="o">/</span> <span class="n">vitesse_local</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">heure_d_arrivee</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">heure_de_depart</span> <span class="o">+</span> <span class="n">duree</span>
+        
+        <span class="k">if</span> <span class="n">velo</span><span class="o">.</span><span class="n">performance</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">:</span>
+            <span class="n">duree</span>                <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1">#self.durees.append( duree)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">heure_d_arrivee</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">heure_de_depart</span> <span class="c1"># il n&#39;est pas parti. Est ce qu&#39;on part du principe que le vélo</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nb_km_trajet</span>    <span class="o">=</span> <span class="mi">0</span> <span class="c1"># a été attribué et qu&#39;il n&#39;a pas bougé ou tout simplement qu&#39;on ne l&#39;a pas attribué</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;velo defaillant &lt; 0.1, rendu a la meme station :-( &quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rendre_vite_velo</span><span class="p">(</span><span class="n">station</span><span class="p">)</span>
+            <span class="k">return</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span>
+        
+        <span class="k">if</span> <span class="n">velo</span><span class="o">.</span><span class="n">performance</span> <span class="o">&lt;</span> <span class="mf">0.3</span><span class="p">:</span> <span class="c1"># Est ce qu&#39;on part du principe qu&#39;il n&#39;est plus dans la station de la maison ?</span>
+            <span class="n">duree</span>                <span class="o">=</span> <span class="n">duree</span> <span class="o">/</span> <span class="mi">10</span> <span class="c1"># sinon un intervalle (entre 0.1 et 0.3). Durée calculée en minutes ?</span>
+            <span class="c1">#self.durees.append( duree)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">heure_d_arrivee</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">heure_de_depart</span> <span class="o">+</span> <span class="n">duree</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nb_km_trajet</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_km_trajet</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;velo defaillant &lt;0.3, rendu a la meme station :-( &quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rendre_vite_velo</span><span class="p">(</span><span class="n">station</span><span class="p">)</span>
+            
+        <span class="k">elif</span> <span class="n">velo</span><span class="o">.</span><span class="n">performance</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">duree</span>                <span class="o">=</span> <span class="n">duree</span> <span class="o">*</span> <span class="mf">1.5</span>
+            <span class="c1">#self.durees.append( duree)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nb_km_trajet</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_km_trajet</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">heure_d_arrivee</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">heure_de_depart</span> <span class="o">+</span> <span class="n">duree</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;velo defaillant &lt;0.5&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+            <span class="c1">#self.durees.append( duree)</span>
+
+
+
+
+    <span class="k">def</span> <span class="nf">rendre_vite_velo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station</span><span class="p">):</span>        
+        <span class="kn">import</span> <span class="nn">time</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sur_velo</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;pas en chemin&quot;</span><span class="p">)</span>    
+            <span class="k">return</span> <span class="mi">0</span>
+        
+        <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">heure_d_arrivee</span><span class="p">:</span> <span class="c1"># si le vélo n&#39;est pas encore arrivé, comment on peut avoir heure d&#39;arrivée pour comparer ?</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;pas encore arrive&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span><span class="p">:</span>
+            <span class="n">station</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">station_maison</span>
+            <span class="n">elem_de</span> <span class="o">=</span> <span class="s2">&quot;station_maison&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">station</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">station_travail</span>
+            <span class="n">elem_de</span> <span class="o">=</span> <span class="s2">&quot;station_travail&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;self.a_la_maison = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span><span class="p">)</span>    
+        
+        <span class="n">rendu</span> <span class="o">=</span> <span class="kc">False</span>
+        
+        <span class="k">for</span> <span class="n">local_station</span> <span class="ow">in</span> <span class="n">station</span><span class="o">.</span><span class="n">nearest</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">local_station</span><span class="o">.</span><span class="n">rendre_velo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_km_trajet</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;velo rendu sur la station </span><span class="si">%s</span><span class="s2"> ( a la maison = </span><span class="si">%s</span><span class="s2">) (elem de </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">local_station</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span><span class="p">,</span> <span class="n">elem_de</span><span class="p">))</span>    
+                <span class="n">rendu</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;impossible de rendre sur ,</span><span class="si">%s</span><span class="s2"> ( a la maison = </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">local_station</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span><span class="p">))</span>    
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rendu</span><span class="p">:</span>
+            <span class="k">return</span>
+                        
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_rendu</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">duree_constatee</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_rendu</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">heure_de_depart</span>
+        <span class="n">trajet</span>          <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">heure_de_depart</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">heure_d_arrivee</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifiant</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_km_trajet</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">velo</span><span class="o">.</span><span class="n">nom</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sur_velo</span>  <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_trajet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_trajet</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_rendu</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trajet_courant</span><span class="o">.</span><span class="n">fin</span><span class="p">(</span><span class="n">local_station</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">velo</span>      <span class="o">=</span> <span class="kc">False</span>
+        
+        <span class="c1">#self.trajets.append(trajet)</span>
+    <span class="k">def</span> <span class="nf">rendre_velo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>       
+        <span class="kn">import</span> <span class="nn">time</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sur_velo</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;pas en chemin&quot;</span><span class="p">)</span>    
+            <span class="k">return</span> <span class="mi">0</span>
+        
+        <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">heure_d_arrivee</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;pas encore arrive&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span><span class="p">:</span>
+            <span class="n">station</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">station_maison</span>
+            <span class="n">elem_de</span> <span class="o">=</span> <span class="s2">&quot;station_maison&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">station</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">station_travail</span>
+            <span class="n">elem_de</span> <span class="o">=</span> <span class="s2">&quot;station_travail&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;self.a_la_maison = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span><span class="p">)</span>    
+        
+        <span class="n">rendu</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">local_station</span> <span class="ow">in</span> <span class="n">station</span><span class="o">.</span><span class="n">nearest</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">local_station</span><span class="o">.</span><span class="n">rendre_velo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_km_trajet</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;velo rendu sur la station </span><span class="si">%s</span><span class="s2"> (a la maison = </span><span class="si">%s</span><span class="s2">) (elem de </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">local_station</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span><span class="p">,</span> <span class="n">elem_de</span><span class="p">))</span>    
+                <span class="n">rendu</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;impossible de rendre sur ,</span><span class="si">%s</span><span class="s2"> (a la maison = </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">local_station</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_la_maison</span><span class="p">))</span>    
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rendu</span><span class="p">:</span>
+            <span class="k">return</span>
+                        
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_rendu</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">duree_constatee</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_rendu</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">heure_de_depart</span>
+        <span class="n">trajet</span>          <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">heure_de_depart</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">heure_d_arrivee</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifiant</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_km_trajet</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">velo</span><span class="o">.</span><span class="n">nom</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sur_velo</span>  <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_trajet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_trajet</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_rendu</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trajet_courant</span><span class="o">.</span><span class="n">fin</span><span class="p">(</span><span class="n">local_station</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">velo</span>      <span class="o">=</span> <span class="kc">False</span>
+        
+        <span class="c1">#self.trajets.append(trajet)</span>
+
+<div class="viewcode-block" id="Cycliste.get_nearest_station"><a class="viewcode-back" href="../doc_classe_Cycliste.html#Cycliste.Cycliste.get_nearest_station">[docs]</a>    <span class="k">def</span> <span class="nf">get_nearest_station</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cycliste</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Calcul de la distance entre le cycliste et les stations afin de trouver la station plus proche</span>
+
+<span class="sd">            :return: le nom de la station la plus proche et la distance entre le cycliste et cette station</span>
+<span class="sd">            :rtype: string, float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">csv</span>
+        <span class="kn">import</span> <span class="nn">math</span>
+        <span class="n">position</span> <span class="o">=</span> <span class="n">cycliste</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./../logs/stations_dispos.csv&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="n">nearests</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">resultat</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">nom</span><span class="p">,</span><span class="n">n_message</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">nb_plot</span><span class="p">,</span><span class="n">nb_libre</span><span class="p">,</span><span class="n">nb_velos</span><span class="p">,</span><span class="n">lattitude</span><span class="p">,</span> <span class="n">longitude</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+                <span class="c1"># The csv module already extracts the information for you</span>
+                <span class="nb">print</span> <span class="p">(</span><span class="n">nom</span><span class="p">,</span><span class="n">n_message</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">nb_plot</span><span class="p">,</span><span class="n">nb_libre</span><span class="p">,</span><span class="n">nb_velos</span><span class="p">,</span><span class="n">lattitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">nom</span> <span class="o">!=</span> <span class="s2">&quot;nom&quot;</span><span class="p">):</span>
+                    <span class="n">xA</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lattitude</span><span class="p">)</span>
+                    <span class="n">yA</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span>
+                    <span class="n">xB</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">yB</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="n">distance</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">xB</span> <span class="o">-</span> <span class="n">xA</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">yB</span> <span class="o">-</span> <span class="n">yA</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bonjour, la distance qui sépare les deux points est de &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">distance</span><span class="p">))</span>
+                    <span class="n">nearests</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nom</span><span class="p">)</span>
+                    <span class="n">resultat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nearests</span><span class="p">,</span> <span class="n">resultat</span>        </div>
+            
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifiant</span>
+    
+    <span class="k">def</span> <span class="nf">log_cycliste</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">to_print</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span>    <span class="bp">self</span><span class="o">.</span><span class="n">identifiant</span>   <span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sportif</span>     <span class="p">,</span>
+                                                 <span class="bp">self</span><span class="o">.</span><span class="n">age</span>         <span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sexe</span>        <span class="p">,</span>
+                                                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_km</span>       <span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">vitesse</span>     <span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attente</span> <span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_cycliste</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">to_print</span><span class="p">)</span>
+            
+    <span class="k">def</span> <span class="nf">log_prise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;prise&quot;</span><span class="p">):</span>
+
+        <span class="n">to_print</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifiant</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">heure_de_depart</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">velo</span><span class="o">.</span><span class="n">nom</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_prise</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">to_print</span><span class="p">)</span>
+            
+    <span class="k">def</span> <span class="nf">log_rendu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;rendu&quot;</span><span class="p">):</span>
+
+        <span class="n">to_print</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="se">\\</span><span class="s2">n&quot;</span><span class="o">%</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifiant</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">heure_de_depart</span><span class="p">,</span> 
+                                       <span class="bp">self</span><span class="o">.</span><span class="n">heure_d_arrivee</span><span class="p">,</span>  <span class="bp">self</span><span class="o">.</span><span class="n">nb_km_trajet</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">velo</span><span class="o">.</span><span class="n">nom</span> <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_rendu</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">to_print</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">log_debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
+        <span class="n">to_print</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">,</span><span class="si">%04d</span><span class="s2">, </span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">identifiant</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n_message</span><span class="p">,</span> <span class="n">time</span><span class="p">()</span> <span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_message</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_debug</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">to_print</span><span class="p">)</span></div>
+		
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Code du module</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Michael Fonkoua, Anais Ewoudi, Celine Kociemba, Yves Moctar Sidibe.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,12 @@
+Documentation du module Sample
+==============================
+
+.. automodule:: Sample
+
+Le module Sample permet simplement de montrer comment 
+fonctionne le système de documentation Sphinx
+
+.. autoclass:: Sample
+   :members:
+   :private-members:
+   :special-members:

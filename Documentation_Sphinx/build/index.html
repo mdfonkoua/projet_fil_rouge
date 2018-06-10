@@ -1,0 +1,430 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Documentation du Projet Fil Rouge: Velib &#8212; documentation Projet fil rouge - Velib 1.0</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Aide" href="aide.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="documentation-du-projet-fil-rouge-velib">
+<h1>Documentation du Projet Fil Rouge: Velib<a class="headerlink" href="#documentation-du-projet-fil-rouge-velib" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Le contenu du projet est librement disponible sur <a class="reference external" href="https://github.com/mdfonkoua/projet_fil_rouge">GitHub/projet_fil_rouge</a> <a href="#id11"><span class="problematic" id="id12">|gitlogo|</span></a>
+et permet à  quiconque de contribuer à  ce projet.</p>
+<img alt="_images/logo_ESILV.png" src="_images/logo_ESILV.png" />
+<p>Membres : Anaïs EWOUDI / Michaël FONKOUA / Céline KOCIEMBA / Yves MOCTAR SIDIBE</p>
+<div class="contents local topic" id="sommaire">
+<ul class="simple">
+<li><a class="reference internal" href="#introduction" id="id13">Introduction</a><ul>
+<li><a class="reference internal" href="#presentation-velib-metropole" id="id14">Présentation Vélib” Métropole</a></li>
+<li><a class="reference internal" href="#problematique" id="id15">Problématique</a></li>
+<li><a class="reference internal" href="#taches-du-projet-velib" id="id16">Tâches du Projet Vélib</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deroulement-du-projet" id="id17">Déroulement du projet</a><ul>
+<li><a class="reference internal" href="#creation-des-classes" id="id18">Création des classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id13">Introduction</a><a class="headerlink" href="#introduction" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="presentation-velib-metropole">
+<h3><a class="toc-backref" href="#id14">Présentation Vélib” Métropole</a><a class="headerlink" href="#presentation-velib-metropole" title="Lien permanent vers ce titre">¶</a></h3>
+<blockquote>
+<div><p>A l’air de l’environnement et de la sensibilisation de la population mondiale sur son empreinte carbone,
+comme le prouve la COP21, Velib” Metropole s’inscrit dans un système permettant de résoudre certains problèmes
+liés au trafic, comme l’émission de CO2 et de gaz polluants, mais aussi la diminution des embouteillages. Il reste
+dans la continuité de la politique nationale, et surtout dans certaines villes, comme Paris, d’encouragement d’utilisation des transports publics
+plutôt que les voitures, en particulier celles ne s’inscrivant pas dans du covoiturage. C’est un système utile surtout pour des courtes distances,
+utilisés le plus souvent en combinaison avec des systèmes de transport en commun comme le métro ou encore le bus.
+<strong>Velib” Metropole</strong> (contraction de <em>«&nbsp;vélo&nbsp;»</em> et <em>«&nbsp;liberté&nbsp;»</em>) est un système de vélos libre-service, implanté dans un premier temps sur Paris en 2007, puis dans
+certaines des plus grandes villes de France. Du 15 Juillet 2007 jusqu’à fin 2017, le système fût géré par <em>JCDECAUX</em>. Depuis
+2018, la gestion a été déléguée à <em>Smovengo</em>, jusqu’à 2032. A ce jour, il existe :</p>
+<ul class="simple">
+<li>692 stations, avec un projet d’extension pour atteindre, à terme, 1 400 stations;</li>
+<li>environ 20 000 vélos sont en circulation;</li>
+<li>en moyenne 150 000 locations sont effectuées par jour ;</li>
+<li>Service 24h/24 et 7j/7.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="problematique">
+<h3><a class="toc-backref" href="#id15">Problématique</a><a class="headerlink" href="#problematique" title="Lien permanent vers ce titre">¶</a></h3>
+<blockquote>
+<div><p>L’analyse du système est nécessaire, pour permettre le contrôle et la réadaptation du syst-me si besoin
+en ait, et ainsi améliorer la disponibilité des vélos, et l’information du cycliste sur
+d’éventuelles alternatives si aucun vélo n’est disponible. Le projet de Vélib” Métropole est de s’étendre, ce qui pose aussi une problématique d’extension
+d’architecture, et de gestion de la maintenance par exemple.</p>
+<p>Nous travaillons sur un projet déjà existant, un code déjà écrit en Python (dire le nom du fichier Python). Nous allons dans la continuité de ce projet.
+Dans un premier temps nous allons décrire les classes créer pour simuler différentes composants nécessaires à notre étude, comme des stations, des vélos,
+des cyclistes. Dans un second temps, nous allons mettre en place architecture «&nbsp;Client-Serveur&nbsp;», qui permette de commmuniquer les informations entre le serveur
+et les clients (ici les stations ou les cyclistes), qui permettront au cycliste d’avoir des informations sur la disponibilité des stations par exemple.
+A la fin, nous allons créer un DockerFile, qui permettra de mettre en place l’architecture Client-Serveur avec les paramètres des logiciels déjà prédéfinis, en créant
+une image Docker.</p>
+</div></blockquote>
+</div>
+<div class="section" id="taches-du-projet-velib">
+<h3><a class="toc-backref" href="#id16">Tâches du Projet Vélib</a><a class="headerlink" href="#taches-du-projet-velib" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Les tâches confiées du projet se décomposent comme suit :</p>
+<blockquote>
+<div><p>1 - Documenter le code avec Sphinx</p>
+<p>2 - Modifier le code pour le rendre client serveur</p>
+<p>3 - Dockerisation du code</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="deroulement-du-projet">
+<h2><a class="toc-backref" href="#id17">Déroulement du projet</a><a class="headerlink" href="#deroulement-du-projet" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="creation-des-classes">
+<h3><a class="toc-backref" href="#id18">Création des classes</a><a class="headerlink" href="#creation-des-classes" title="Lien permanent vers ce titre">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="section" id="classe-logger">
+<h1>Classe «&nbsp;logger&nbsp;»<a class="headerlink" href="#classe-logger" title="Lien permanent vers ce titre">¶</a></h1>
+<p>La classe «&nbsp;Logger&nbsp;» a été créée pour générer des logs.</p>
+<p>Voici un extrait du code, qui est en détail dans la partie «&nbsp;Annexes&nbsp;»</p>
+<div class="code ipython3 highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">path</span>    <span class="o">=</span> <span class="n">path</span> <span class="c1"># On crée une variable self.path et on lui donne comme valeur path</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">limit</span>   <span class="o">=</span> <span class="n">limit_to_save_to_disk</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logs</span>    <span class="o">=</span> <span class="p">[]</span> <span class="c1">## Pour rentrer le log</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">nb_logs</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">header</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="classe-cycliste">
+<h1>Classe «&nbsp;Cycliste&nbsp;»<a class="headerlink" href="#classe-cycliste" title="Lien permanent vers ce titre">¶</a></h1>
+<p>La classe «&nbsp;Cycliste&nbsp;» a été créée pour simuler des cyclistes. Plusieurs critères ont été sélectionnés
+pour ça, comme l’âge, le sexe, ou encore les compétences sportives, qui détermineront la vitesse du cycliste.
+Voici un extrait du code, qui est en détail dans la partie «&nbsp;Annexes&nbsp;»</p>
+<div class="code ipython3 highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">norm</span>
+<span class="n">homme</span>   <span class="o">=</span> <span class="s2">&quot;homme&quot;</span>
+    <span class="n">femme</span>   <span class="o">=</span> <span class="s2">&quot;femme&quot;</span>
+    <span class="n">age_min</span> <span class="o">=</span> <span class="mi">14</span>
+    <span class="n">age_max</span> <span class="o">=</span> <span class="mi">80</span>
+    <span class="n">sexe</span>    <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">homme</span><span class="p">,</span> <span class="n">femme</span><span class="p">])</span>
+    <span class="n">age</span>     <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">age_min</span> <span class="p">,</span><span class="n">age_max</span><span class="p">)</span>
+    <span class="n">sportif</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span> <span class="p">])</span>
+
+    <span class="c1"># Les chiffres qui vont suivre en paramètre ont été choisis au hasard comme référence</span>
+
+    <span class="k">if</span>   <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">35</span> <span class="p">:</span> <span class="n">facteur</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span> <span class="n">loc</span> <span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.2</span> <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="p">:</span> <span class="n">facteur</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span> <span class="n">loc</span> <span class="o">=</span><span class="mi">1</span>  <span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.2</span> <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">90</span> <span class="p">:</span> <span class="n">facteur</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span> <span class="n">loc</span> <span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.2</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>On génère un nom, sa position,pour le cycliste, et pour la station, ce qui permettra de calculer une distance entre les 2.</p>
+<p>Par la suite, différentes situations ont été créées :</p>
+<ul class="simple">
+<li>Prendre le vélo (Oui / Non)</li>
+<li>Simulation des kilomètres parcourus, de l’heure de départ, d’arrivée…</li>
+</ul>
+<p>La classe «&nbsp;Trajet&nbsp;» permet de simuler un parcours effectué par un cycliste.</p>
+</div>
+<div class="section" id="classe-velo">
+<h1>Classe «&nbsp;Vélo&nbsp;»<a class="headerlink" href="#classe-velo" title="Lien permanent vers ce titre">¶</a></h1>
+<p>La classe «&nbsp;Vélo&nbsp;» permet de répertorier toutes les caractéristiques pouvant impacter un vélo :</p>
+<ul class="simple">
+<li>Problèmes potentiels sur le vélo</li>
+<li>Réparation nécessaires</li>
+<li>L’état du vélo</li>
+<li>Le statut du vélo (restitué ou non)</li>
+</ul>
+<p>Voici un extrait du code, qui est en détail dans la partie «&nbsp;Annexes&nbsp;»</p>
+<div class="code ipython3 highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">norm</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">performance</span>            <span class="o">=</span> <span class="n">norm</span><span class="p">(</span> <span class="n">loc</span> <span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.2</span> <span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">nom</span>               <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">performance</span>       <span class="o">=</span> <span class="n">performance</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">station</span>           <span class="o">=</span> <span class="n">station</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">degradation</span>       <span class="o">=</span> <span class="mi">0</span> <span class="c1"># On part du principe qu&#39;il n&#39;y a pas de dégradation à l&#39;initiale</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">performances</span>      <span class="o">=</span> <span class="p">[]</span> <span class="c1"># état du vélo</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">debug</span>             <span class="o">=</span> <span class="kc">True</span> <span class="c1"># False</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">nb_km_trajet</span>      <span class="o">=</span> <span class="mi">0</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">heures_rendu</span>      <span class="o">=</span> <span class="p">[]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">disponible</span>        <span class="o">=</span> <span class="kc">True</span> <span class="c1"># statut du vélo</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger_reparation</span> <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;./../logs/velo_reparations.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;velo,n_message,time,performance&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger_etat</span>       <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;./../logs/velos_etats.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;velo,n_message,time,station.nom,performance,nb_km_trajet&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">probleme_list</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_problemes_list</span><span class="p">()</span> <span class="c1">#Problèmes potentiels sur le vélo</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">n_message</span>         <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="classe-station">
+<h1>Classe «&nbsp;Station&nbsp;»<a class="headerlink" href="#classe-station" title="Lien permanent vers ce titre">¶</a></h1>
+<p>La classe «&nbsp;Station&nbsp;» permet de rentrer les paramètres d’une station :</p>
+<ul class="simple">
+<li>Nom ;</li>
+<li>Position ;</li>
+<li>Nombre de plots possibles (pour déposer un vélo) ;</li>
+<li>Nombre de vélos disponibles…</li>
+</ul>
+<p>Voici un extrait du code, qui est en détail dans la partie «&nbsp;Annexes&nbsp;»</p>
+<div class="code ipython3 highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">nom</span>               <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">position</span>          <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">nb_plot</span>           <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span> <span class="c1"># Nombre de places</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">nb_libre</span>          <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Nombre de places libres</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">nb_velos</span>          <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_plot</span> <span class="c1"># On part du principe où toutes les places sont prises</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">velos</span>             <span class="o">=</span> <span class="p">[]</span>     <span class="c1"># Création d&#39;une liste vide</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">n_message</span>         <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">debug</span>             <span class="o">=</span> <span class="kc">False</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">avaries</span>           <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Avarie sur le vélo</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">arrete</span>            <span class="o">=</span> <span class="kc">False</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">liste_d_avaries</span>   <span class="o">=</span> <span class="p">[]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">nb_fois_en_arret</span>  <span class="o">=</span> <span class="mi">0</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger_dispos</span>     <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;./../logs/stations_dispos.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;nom,n_message,time,nb_plot,nb_libre,nb_velos,lattitude, longitude&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger_reparation</span> <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;./../logs/stations_reparations.csv&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger_avarie</span>     <span class="o">=</span> <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;./../logs/stations_avarie.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;nom,n_message,time,avarie&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tout le code décrit précédemment sera utilisé dans la partie «&nbsp;Client - Serveur&nbsp;».</p>
+</div>
+<div class="section" id="mise-en-place-architecture-client-serveur">
+<h1>Mise en place architecture «&nbsp;Client-Serveur&nbsp;»<a class="headerlink" href="#mise-en-place-architecture-client-serveur" title="Lien permanent vers ce titre">¶</a></h1>
+<p>On définit un Client - Serveur, un mode de communication à travers un réseau entre plusieurs programmes :
+l’un, qualifié de client, envoie des requêtes ; l’autre ou les autres, qualifiés de serveurs, attendent
+les requêtes des clients et y répondent.
+Dans notre projet, nous avons créé 3 programmes: un serveur, un client - station et un client - cycliste.</p>
+<ul>
+<li><p class="first">Serveur</p>
+<p>Nous avons créé un script Python,appelé «&nbsp;run.py&nbsp;» dans le chemin du répertoire «&nbsp;Vlib_Client_Server/Server&nbsp;». Voir le lien github du script suivant:
+<strong>Links:</strong> :download: <a href="#id1"><span class="problematic" id="id2">:githublink:`https://github.com/mdfonkoua/projet_fil_rouge/Vlib_Client_Server/Server/run.py|*`</span></a></p>
+<p>qui va permettre de créer une liaison de socket, et le serveur se met en attente de connexion du client (station ou cycliste).
+C’est l’étape d’initialisation du serveur.</p>
+<p>Dans le  cas d’une connexion du client, le serveur accepte la connexion puis mémorise l’identifiant
+du client, son adresse IP, son numéro de port et sa localisation géographique. Le serveur communique avec le client pour confirmer
+la connexion. La liaison client-serveur perdurera tant que le client ne se déconnecte pas.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Avertissement</p>
+<p class="last">Après avoir suivi la partie «&nbsp;Aide&nbsp;», ouvrir une console pour lancer la commande «&nbsp;docker exec -it server /bin/bash&nbsp;»
+attendre la fin d’exécution de la commande précedente et voir si la console nous donne la main dans le conteneur «&nbsp;server&nbsp;» à partir du répertoire /app.
+lancer la commande «&nbsp;python run.py&nbsp;»</p>
+</div>
+<img alt="_images/server.JPG" src="_images/server.JPG" />
+</li>
+<li><p class="first">Client - Station</p>
+<p>Ensuite, nous avons créé un script Python,appelé «&nbsp;run.py&nbsp;» dans le chemin du répertoire «&nbsp;Vlib_Client_Server/Station&nbsp;». Voir le lien github du script suivant:
+<strong>Links:</strong> :download: <a href="#id3"><span class="problematic" id="id4">:githublink:`https://github.com/mdfonkoua/projet_fil_rouge/Vlib_Client_Server/Station/run.py|*`</span></a></p>
+<p>Pour le cadre de notre étude, on génère aléatoirement le nombre de stations possibles, le nom des stations (avec une combinaison possible
+de 5 alphanumériques, avec leur position. Il enregistre une ligne contenant toutes les informations dans un fichier, enregistrant toutes les
+stations connectées au serveur. A partir de ce moment-là, on se connecte au serveur. Le nom de la station et sa position
+sont ainsi émis, avec un message sur le statut de la connexion. Comme expliqué précédemment, la connexion reste établie jusqu’à déconnexion
+du client.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Avertissement</p>
+<p class="last">Après avoir suivi la partie «&nbsp;Aide&nbsp;» pour lancer un docker, ouvrir une console pour lancer la commande «&nbsp;docker exec -it station /bin/bash&nbsp;»
+attendre la fin d’exécution de la commande précedente et voir si la console nous donne la main dans le conteneur «&nbsp;station&nbsp;» à partir du répertoire /app.
+lancer la commande «&nbsp;python run.py&nbsp;»</p>
+</div>
+<img alt="_images/station.JPG" src="_images/station.JPG" />
+</li>
+<li><p class="first">Client - Cycliste</p>
+<p>Nous avons créé un script Python,appelé «&nbsp;run.py&nbsp;» dans le chemin du répertoire «&nbsp;Vlib_Client_Server/Cycliste&nbsp;». Voir le lien github du script suivant:
+<strong>Links:</strong> :download: <a href="#id5"><span class="problematic" id="id6">:githublink:`https://github.com/mdfonkoua/projet_fil_rouge/Vlib_Client_Server/Cycliste/run.py|*`</span></a></p>
+<p>La différence avec Client - Station, est l’ajout de la distance entre la station la plus proche, et le cycliste. En effet, la liste créée contenant toutes
+les stations connectées, va nous permettre de calculer la distance entre le cycliste et toutes les stations connectées, pour nous permettre de choisir la station
+la plus proche du cyliste.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Avertissement</p>
+<p class="last">Après avoir suivi la partie «&nbsp;Aide&nbsp;» pour lancer un docker, ouvrir une console pour lancer la commande «&nbsp;docker exec -it cycliste /bin/bash&nbsp;»
+attendre la fin d’exécution de la commande précedente et voir si la console nous donne la main dans le conteneur «&nbsp;cycliste&nbsp;» à partir du répertoire /app.
+lancer la commande «&nbsp;python run.py&nbsp;»</p>
+</div>
+<img alt="_images/cycliste.JPG" src="_images/cycliste.JPG" />
+</li>
+</ul>
+</div>
+<div class="section" id="dockerisation">
+<h1>Dockerisation<a class="headerlink" href="#dockerisation" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Docker est une plate-forme permettant  de développer, déployer et exécuter des applications avec des conteneurs.</p>
+<p>La conteneurisation consiste à utiliser des conteneurs Linux pour déployer des applications. Une utilisation sur Windows est possible, après installation d’une VM.</p>
+<p>Un conteneur est lancé en exécutant une image. L’image est un package exécutable qui inclut tout ce dont l’on a besoin pour exécuter un application dont :</p>
+<ul class="simple">
+<li>le code</li>
+<li>une exécution</li>
+<li>des bibliothèques</li>
+<li>des variables d’environnement</li>
+<li>des fichiers de configuration</li>
+</ul>
+<p>Un conteneur est une instance d’exécution d’une image. Il s’exécute nativement sur linux et partage le noyau de la machine hôte avec d’autres conteneurs. Il exécute un processus discret, ne prenant pas plus de mémoire q
+ue tout autre exécutable,</p>
+<dl class="docutils">
+<dt>L’objectif est de saisir un environnement d’exécution sous forme d’images. Ces dernières  sont définies par le dockerfile. Voir le lien github du fichier Dockerfile suivant:</dt>
+<dd><strong>Links:</strong> :download: <a href="#id7"><span class="problematic" id="id8">:githublink:`https://github.com/mdfonkoua/projet_fil_rouge/Vlib_Client_Server/Config/Dockerfile|*`</span></a>
+L’accès à des ressources telles que les interfaces réseau et les lecteurs de disque est virtualisé dans cet environnement isolé du reste du système.</dd>
+</dl>
+<p>Il faut donc mapper les ports vers le monde extérieur et être précis sur les fichier que l’on souhaite « copier » dans cet environnement. Après avoir fait cela, la construction de l’application définie dans ce dockerfile se comporte exactement de la même manière partout ou elle s’exécute.</p>
+<p>Les paramètres dans notre Dockerfile est l’utilisation d’Anaconda3, avec installation de pygeocoder pour la géolocalisation, création de deux répertoire /app et /logs et définition du travail dans le nouveau répertoire /app.
+Voici à quoi ressemble notre dockerfile que nous avons créé dans le chemin du répertoire «&nbsp;Vlib_Client_Server/Config&nbsp;»
+.. code-block:: bash</p>
+<blockquote>
+<div><p># Utiliser un moteur d’exécution officiel de Python comme image mère
+FROM continuumio/anaconda3:latest
+#Commande
+RUN pip install pygeocoder </p>
+<blockquote>
+<div>&amp;&amp; mkdir /app /logs</div></blockquote>
+<p># Définir le répertoire de travail sur /app
+WORKDIR /app</p>
+</div></blockquote>
+<p>Le Docker-compose situé dans le répertoire «&nbsp;Vlib_Client_Server&nbsp;», pour le serveur et les 2 clients, va créer une image à partir du dockerfile présenté précédemment, entrer en paramètre le port , synchroniser notre répertoire local contenant notre script créé précédemment au répertoire /app
+de même pour /logs pour accéder au fichier suivant:
+.. code:: ipython3</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>with open(«&nbsp;./../logs/stations_dispos.csv&nbsp;») as f:</dt>
+<dd>reader = csv.reader(f)</dd>
+</dl>
+</div></blockquote>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nom</span><span class="p">,</span><span class="n">n_message</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">nb_plot</span><span class="p">,</span><span class="n">nb_libre</span><span class="p">,</span><span class="n">nb_velos</span><span class="p">,</span><span class="n">lattitude</span><span class="p">,</span> <span class="n">longitude</span>
+<span class="n">Station_azer6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528378534.2925775</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">40.8597519</span><span class="p">,</span><span class="o">-</span><span class="mf">123.5112522</span>
+<span class="n">Station_azet7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528378932.6203423</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">45.7678379</span><span class="p">,</span><span class="o">-</span><span class="mf">113.3342124</span>
+<span class="n">Station_azetw</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528400505.101629</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">48.2267692</span><span class="p">,</span><span class="o">-</span><span class="mf">103.6174956</span>
+<span class="n">Station_azeym</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528400907.630543</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">28.191323</span><span class="p">,</span><span class="o">-</span><span class="mf">82.40245</span>
+<span class="n">Station_azeyl</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528401092.2217212</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">39.9230051</span><span class="p">,</span><span class="o">-</span><span class="mf">104.4188044</span>
+<span class="n">Station_azetm</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528472913.994924</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">45.9695216</span><span class="p">,</span><span class="o">-</span><span class="mf">94.6958863</span>
+<span class="n">Station_azeyh</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528474061.517037</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">29.3136055</span><span class="p">,</span><span class="o">-</span><span class="mf">94.8041015</span>
+<span class="n">Station_azerg</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528474825.6791272</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mf">44.1644143</span><span class="p">,</span><span class="o">-</span><span class="mf">85.94889649999999</span>
+<span class="n">Station_azey5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528474835.422983</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mf">42.664821</span><span class="p">,</span><span class="o">-</span><span class="mf">88.5018959</span>
+<span class="n">Station_azet9</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528474894.1510055</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mf">38.4813306</span><span class="p">,</span><span class="o">-</span><span class="mf">88.4993975</span>
+<span class="n">Station_azet5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528475048.6729205</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">32.6895118</span><span class="p">,</span><span class="o">-</span><span class="mf">113.9804262</span>
+<span class="n">Station_azer2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528475211.9637976</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">43.2374625</span><span class="p">,</span><span class="o">-</span><span class="mf">110.28348</span>
+<span class="n">Station_azeuq</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1528475486.8801653</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mf">46.81313</span><span class="p">,</span><span class="o">-</span><span class="mf">104.4794</span>
+</pre></div>
+</div>
+<p>Ce Docker-compose permet d’éxecuter plusieurs conteneurs:</p>
+<p>1 - Serveur</p>
+<p>2 - Client - Station</p>
+<p>3 - Client - Cycliste</p>
+<dl class="docutils">
+<dt>Voir le lien github du fichier docker-compose.yml suivant:</dt>
+<dd><strong>Links:</strong> :download: <a href="#id9"><span class="problematic" id="id10">:githublink:`https://github.com/mdfonkoua/projet_fil_rouge/Vlib_Client_Server/Config/docker-compose.yml|*`</span></a></dd>
+</dl>
+<p>Cela executera les 3 images pour pouvoir exécuter le code Python.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Avertissement</p>
+<p class="last">Se placer dans le dossier «&nbsp;Vlib_Client_Server&nbsp;» et ouvrir une console pour lancer la commande «&nbsp;docker-compose up –build&nbsp;»</p>
+</div>
+<img alt="_images/docker-compose.JPG" src="_images/docker-compose.JPG" />
+</div></blockquote>
+<div class="section" id="perspectives">
+<h2>Perspectives<a class="headerlink" href="#perspectives" title="Lien permanent vers ce titre">¶</a></h2>
+<blockquote>
+<div>Malgré le travail que nous avons réalisé, plusieurs axes de dévloppement peuvent être</div></blockquote>
+<p>explorés. Une analyse comportementale des stations, et s’appuyant sur un ratio de disponibilité,
+qui peut varier en fonction de leur localisation géographique. Une idée pour cela serait de ne pas analyser le comportement
+des stations une par une, mais de faire un rassemblement, créer des clusters de stations qui se ressemblent pour
+ensuite en étudier le comportement.</p>
+<p>Une amélioration de plus serait de calculer la distance entre le cycliste et la station la plus proche, mais avec des conditions, propres
+au cycliste (on va par exemple essayer de trouver la station la plus proche pour déposer un vélo, ou pour en prendre).</p>
+</div>
+</div>
+<div class="section" id="annexes">
+<h1>Annexes<a class="headerlink" href="#annexes" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aide.html">Aide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc_classe_Server.html">Documentation du module Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc_classe_Station.html">Documentation du module Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc_classe_Cycliste.html">Documentation du module Cycliste</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc_classe_Velo.html">Documentation du module Velo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc_classe_logger.html">Documentation du module logger</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="index-et-tables">
+<h1>Index et tables<a class="headerlink" href="#index-et-tables" title="Lien permanent vers ce titre">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Index du module</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Page de recherche</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="aide.html" title="Chapitre suivant">Aide</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Michael Fonkoua, Anais Ewoudi, Celine Kociemba, Yves Moctar Sidibe.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
