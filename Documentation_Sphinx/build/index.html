@@ -219,9 +219,8 @@ Voici un extrait du code, qui est en détail dans la partie «&nbsp;Annexes&nbsp
 </pre></div>
 </div>
 <p>Tout le code décrit précédemment sera utilisé dans la partie «&nbsp;Client - Serveur&nbsp;».</p>
-</div>
 <div class="section" id="mise-en-place-architecture-client-serveur">
-<h1>Mise en place architecture «&nbsp;Client-Serveur&nbsp;»<a class="headerlink" href="#mise-en-place-architecture-client-serveur" title="Lien permanent vers ce titre">¶</a></h1>
+<h2>Mise en place architecture «&nbsp;Client-Serveur&nbsp;»<a class="headerlink" href="#mise-en-place-architecture-client-serveur" title="Lien permanent vers ce titre">¶</a></h2>
 <p>On définit un Client - Serveur, un mode de communication à travers un réseau entre plusieurs programmes :
 l’un, qualifié de client, envoie des requêtes ; l’autre ou les autres, qualifiés de serveurs, attendent
 les requêtes des clients et y répondent.
@@ -276,7 +275,7 @@ lancer la commande «&nbsp;python run.py&nbsp;»</p>
 </ul>
 </div>
 <div class="section" id="dockerisation">
-<h1>Dockerisation<a class="headerlink" href="#dockerisation" title="Lien permanent vers ce titre">¶</a></h1>
+<h2>Dockerisation<a class="headerlink" href="#dockerisation" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Docker est une plate-forme permettant  de développer, déployer et exécuter des applications avec des conteneurs.</p>
 <p>La conteneurisation consiste à utiliser des conteneurs Linux pour déployer des applications. Une utilisation sur Windows est possible, après installation d’une VM.</p>
 <p>Un conteneur est lancé en exécutant une image. L’image est un package exécutable qui inclut tout ce dont l’on a besoin pour exécuter un application dont :</p>
@@ -332,20 +331,23 @@ de même pour /logs pour accéder au fichier suivant:</p>
 <p>2 - Client - Station</p>
 <p>3 - Client - Cycliste</p>
 <p>Voir le lien github du fichier suivant “docker-compose.yml &lt;<a class="reference external" href="https://github.com/mdfonkoua/projet_fil_rouge/blob/master/Vlib_Client_Server/docker-compose.yml">https://github.com/mdfonkoua/projet_fil_rouge/blob/master/Vlib_Client_Server/docker-compose.yml</a>&gt;`_</p>
-<p>Cela executera les 3 images pour pouvoir exécuter le code Python.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>docker-compose up --build
+</pre></div>
+</div>
+<img alt="_images/docker-compose.JPG" src="_images/docker-compose.JPG" />
+</div>
+<div class="section" id="perspectives">
+<h2>Perspectives<a class="headerlink" href="#perspectives" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Malgré le travail que nous avons réalisé, plusieurs axes de dévloppement peuvent être explorés. Une analyse comportementale des stations, et s’appuyant sur un ratio de disponibilité,
+qui peut varier en fonction de leur localisation géographique. Une idée pour cela serait de ne pas analyser le comportement
+des stations uCela executera les 3 images pour pouvoir exécuter le code Python.</p>
 <blockquote>
 <div><div class="admonition warning">
 <p class="first admonition-title">Avertissement</p>
 <p class="last">Se placer dans le dossier «&nbsp;Vlib_Client_Server&nbsp;» et ouvrir une console pour lancer la commande ci-dessous</p>
 </div>
-<img alt="_images/docker-compose.JPG" src="_images/docker-compose.JPG" />
 </div></blockquote>
-<div class="section" id="perspectives">
-<h2>Perspectives<a class="headerlink" href="#perspectives" title="Lien permanent vers ce titre">¶</a></h2>
-<blockquote>
-<div>Malgré le travail que nous avons réalisé, plusieurs axes de dévloppement peuvent être explorés. Une analyse comportementale des stations, et s’appuyant sur un ratio de disponibilité,</div></blockquote>
-<p>qui peut varier en fonction de leur localisation géographique. Une idée pour cela serait de ne pas analyser le comportement
-des stations une par une, mais de faire un rassemblement, créer des clusters de stations qui se ressemblent pour
+<p>ne par une, mais de faire un rassemblement, créer des clusters de stations qui se ressemblent pour
 ensuite en étudier le comportement.</p>
 <p>Une amélioration de plus serait de calculer la distance entre le cycliste et la station la plus proche, mais avec des conditions, propres
 au cycliste (on va par exemple essayer de trouver la station la plus proche pour déposer un vélo, ou pour en prendre).</p>
@@ -354,7 +356,7 @@ au cycliste (on va par exemple essayer de trouver la station la plus proche pour
 <div class="section" id="annexes">
 <h1>Annexes<a class="headerlink" href="#annexes" title="Lien permanent vers ce titre">¶</a></h1>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">:</span></p>
+<p class="caption"><span class="caption-text">Documentation:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="aide.html">Aide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="doc_classe_Server.html">Documentation du module Server</a></li>

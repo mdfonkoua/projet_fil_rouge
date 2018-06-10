@@ -201,7 +201,7 @@ Tout le code décrit précédemment sera utilisé dans la partie "Client - Serve
 
 
 Mise en place architecture "Client-Serveur"
-===========================================
+###########################################
 
 On définit un Client - Serveur, un mode de communication à travers un réseau entre plusieurs programmes : 
 l'un, qualifié de client, envoie des requêtes ; l'autre ou les autres, qualifiés de serveurs, attendent 
@@ -264,7 +264,7 @@ Dans notre projet, nous avons créé 3 programmes: un serveur, un client - stati
 
 
 Dockerisation
-=============
+#############
 
 Docker est une plate-forme permettant  de développer, déployer et exécuter des applications avec des conteneurs.
 
@@ -341,21 +341,26 @@ Ce Docker-compose permet d'éxecuter plusieurs conteneurs:
 
 Voir le lien github du fichier suivant 'docker-compose.yml <https://github.com/mdfonkoua/projet_fil_rouge/blob/master/Vlib_Client_Server/docker-compose.yml>`_
 
-Cela executera les 3 images pour pouvoir exécuter le code Python.
 
-	.. warning::
-			Se placer dans le dossier "Vlib_Client_Server" et ouvrir une console pour lancer la commande ci-dessous
-	.. image:: ./image/docker-compose.JPG
+.. code-block:: bash
 
-	
+  docker-compose up --build
+			
+.. image:: ./image/docker-compose.JPG
+
+
 	
 
 Perspectives
 ############
 
-	Malgré le travail que nous avons réalisé, plusieurs axes de dévloppement peuvent être explorés. Une analyse comportementale des stations, et s'appuyant sur un ratio de disponibilité, 
+Malgré le travail que nous avons réalisé, plusieurs axes de dévloppement peuvent être explorés. Une analyse comportementale des stations, et s'appuyant sur un ratio de disponibilité, 
 qui peut varier en fonction de leur localisation géographique. Une idée pour cela serait de ne pas analyser le comportement
-des stations une par une, mais de faire un rassemblement, créer des clusters de stations qui se ressemblent pour 
+des stations uCela executera les 3 images pour pouvoir exécuter le code Python.
+
+	.. warning::
+			Se placer dans le dossier "Vlib_Client_Server" et ouvrir une console pour lancer la commande ci-dessous
+ne par une, mais de faire un rassemblement, créer des clusters de stations qui se ressemblent pour 
 ensuite en étudier le comportement.
 
 Une amélioration de plus serait de calculer la distance entre le cycliste et la station la plus proche, mais avec des conditions, propres 
@@ -367,7 +372,7 @@ Annexes
 
 .. toctree::
    :maxdepth: 2
-   :caption: :
+   :caption: Documentation:
 
    aide
    doc_classe_Server
